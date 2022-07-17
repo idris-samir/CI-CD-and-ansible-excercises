@@ -1,0 +1,6 @@
+---
+- name: Config and Deployment
+  hosts: all
+
+  roles:
+    - print
