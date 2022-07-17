@@ -5,7 +5,7 @@ orbs:
   aws-cli: circleci/aws-cli@2.0.3
 
 commands:
-   # Exercise - Rollback
+  # Exercise - Rollback
   destroy_environment:
     steps:
       - run:
@@ -82,7 +82,7 @@ jobs:
   # Exercise: Smoke Testing
   smoke_test:
     docker:
-      - image: alpine:latest
+      - image: amazon/aws-cli
     steps:
       - run:
           name: Test job
@@ -100,4 +100,6 @@ workflows:
       # - configure_infrastructure
       # - smoke_test
       - create_infrastructure
-      - smoke_test
+      - smoke_test:
+          requires:
+            - create_infrastructure
